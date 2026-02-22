@@ -8,6 +8,7 @@ import messageRoutes from "./routes/messageRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 import { clerkMiddleware } from "@clerk/express";
+import { errorHandler } from "./middleware/errorHandle.js";
 
 const app = express();
 
@@ -22,5 +23,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+
+app.use(errorHandler);
 
 export default app;
